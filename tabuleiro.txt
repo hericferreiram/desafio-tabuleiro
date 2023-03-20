@@ -1,0 +1,42 @@
+<script>
+  //32 peças - matriz 8x8
+  //peao(16) - 1
+  //bispo(4) - 2
+  //cavalo(4) - 3
+  //torre(4) - 4
+  //rei(2) - 5
+  //rainha(2) - 6
+
+  var tabuleiro = [];
+
+  for (var i = 0; i < 8; i++) {
+  var entrada = prompt("Insira os 8 numeros da configuracao da linha ${i + 1} do tabuleiro, separados por espaco");
+  var numeros = entrada.split(" ");
+  var linha = numeros.map(function(numero) {
+    return parseInt(numero);
+  });
+  tabuleiro.push(linha);
+}
+
+  var contagemPecas = {
+    1: 0, //peao
+    2: 0, //bispo
+    3: 0, //cavalo
+    4: 0, //torre
+    5: 0, //rei
+    6: 0, //rainha
+  };
+
+  var tipoPeca = ["Peao", "Bispo", "Cavalo", "Torre", "Rei", "Rainha"];
+
+  for (var i = 0; i < tabuleiro.length; i++) {
+    for (var j = 0; j < tabuleiro[i].length; j++) {
+      var peca = tabuleiro[i][j];
+      contagemPecas[peca] += 1;
+    }
+  }
+
+  for (var i = 0; i < tipoPeca.length; i++) {
+    console.log(tipoPeca[i] + ": " + contagemPecas[i + 1] + " peca(s)");
+  }
+</script>
